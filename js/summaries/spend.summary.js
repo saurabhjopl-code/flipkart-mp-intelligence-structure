@@ -1,12 +1,14 @@
-import { aggregateGMV } from "../aggregations/gmv.aggregation.js";
-import { calculateReturnPercent } from "../calculations/return.calculation.js";
+function getSpendSummary() {
 
-export function getReturnSummary() {
-  const { totalRevenue, returnAmount } = aggregateGMV();
+  const CDR = window.dataStore.CDR || [];
 
-  const returnPercent = calculateReturnPercent(returnAmount, totalRevenue);
+  let totalSpend = 0;
+
+  CDR.forEach(row => {
+    totalSpend += Number(row["Ad Spend"] || 0);
+  });
 
   return {
-    returnPercent
+    totalSpend
   };
 }
