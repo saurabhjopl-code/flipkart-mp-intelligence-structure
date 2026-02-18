@@ -1,12 +1,22 @@
-import { aggregateGMV } from "../aggregations/gmv.aggregation.js";
-import { aggregateSpend } from "../aggregations/spend.aggregation.js";
-import { calculateROI } from "../calculations/roi.calculation.js";
+function getRoiSummary() {
 
-export function getRoiSummary() {
-  const { netSales } = aggregateGMV();
-  const { totalSpend } = aggregateSpend();
+  const GMV = window.dataStore.GMV || [];
+  const CDR = window.dataStore.CDR || [];
 
-  const roi = calculateROI(netSales, totalSpend);
+  let netSales = 0;
+  let totalSpend = 0;
+
+  GMV.forEach(row => {
+    netSales += Number(row["Final Sale Amount"] || 0);
+  });
+
+  CDR.forEach(row => {
+    totalSpend += Number(row["Ad Spend"] || 0);
+  });
+
+  const roi = totalSpend > 0
+    ? netSales / totalSpend
+    : 0;
 
   return {
     roi
