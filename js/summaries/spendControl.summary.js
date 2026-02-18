@@ -1,12 +1,22 @@
-import { aggregateGMV } from "../aggregations/gmv.aggregation.js";
-import { aggregateSpend } from "../aggregations/spend.aggregation.js";
-import { calculateSpendPercent } from "../calculations/spendPercent.calculation.js";
+function getSpendControlSummary() {
 
-export function getSpendControlSummary() {
-  const { netSales } = aggregateGMV();
-  const { totalSpend } = aggregateSpend();
+  const GMV = window.dataStore.GMV || [];
+  const CDR = window.dataStore.CDR || [];
 
-  const spendPercent = calculateSpendPercent(totalSpend, netSales);
+  let netSales = 0;
+  let totalSpend = 0;
+
+  GMV.forEach(row => {
+    netSales += Number(row["Final Sale Amount"] || 0);
+  });
+
+  CDR.forEach(row => {
+    totalSpend += Number(row["Ad Spend"] || 0);
+  });
+
+  const spendPercent = netSales > 0
+    ? (totalSpend / netSales) * 100
+    : 0;
 
   return {
     spendPercent
