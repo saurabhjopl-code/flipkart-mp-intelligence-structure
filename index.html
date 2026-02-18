@@ -19,19 +19,8 @@
 
 <body>
 
-<!-- PROGRESS OVERLAY (Does NOT modify layout) -->
-<div class="progress-overlay" id="progressOverlay">
-  <div class="progress-box">
-    <h3>Loading Data...</h3>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    <div class="progress-status" id="progressStatus"></div>
-  </div>
-</div>
-
 <header class="app-header">
-  <div class="header-left">
+  <div>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
@@ -40,49 +29,83 @@
     <p class="app-subtitle">Ads • Sales • ROI • Control</p>
   </div>
 
-  <div class="header-right">
+  <div>
     <button class="btn btn-outline">Export Summary</button>
   </div>
 </header>
 
 <div class="layout">
 
+  <!-- SIDEBAR -->
   <aside class="sidebar">
     <ul>
+
       <li class="nav-item active">Dashboard</li>
 
+      <!-- SALES -->
       <li class="nav-item expandable">
         Sales
         <ul class="sub-menu">
-          <li class="sub-item">Sales Summary</li>
-          <li class="sub-item">Category Analysis</li>
+          <li class="sub-item">Sales Health</li>
+          <li class="sub-item">Category Performance</li>
           <li class="sub-item">Top Sellers</li>
+          <li class="sub-item">SKU Deep Dive</li>
         </ul>
       </li>
 
+      <!-- ADS -->
       <li class="nav-item expandable">
         Ads (PLA)
         <ul class="sub-menu">
           <li class="sub-item">Spend vs Sales</li>
           <li class="sub-item">Campaign Performance</li>
+          <li class="sub-item">SKU Ads Performance</li>
           <li class="sub-item">Keyword Performance</li>
           <li class="sub-item">Placement Performance</li>
         </ul>
       </li>
 
-      <li class="nav-item">Payments</li>
-      <li class="nav-item">Profitability</li>
-      <li class="nav-item">Insights</li>
+      <!-- PAYMENTS -->
+      <li class="nav-item expandable">
+        Payments
+        <ul class="sub-menu">
+          <li class="sub-item">Payment Summary</li>
+          <li class="sub-item">Settlement Detail</li>
+        </ul>
+      </li>
+
+      <!-- PROFITABILITY -->
+      <li class="nav-item expandable">
+        Profitability
+        <ul class="sub-menu">
+          <li class="sub-item">SKU P&L</li>
+          <li class="sub-item">Category P&L</li>
+          <li class="sub-item">Account P&L</li>
+          <li class="sub-item">Break-even Analysis</li>
+        </ul>
+      </li>
+
+      <!-- INSIGHTS -->
+      <li class="nav-item expandable">
+        Insights
+        <ul class="sub-menu">
+          <li class="sub-item">MoM Comparison</li>
+          <li class="sub-item">Ads vs Organic</li>
+          <li class="sub-item">Spend Control</li>
+        </ul>
+      </li>
+
     </ul>
   </aside>
 
+  <!-- MAIN CONTENT -->
   <main class="main-content">
 
-    <!-- FILTERS -->
+    <!-- FILTER BAR -->
     <div class="filter-container">
       <div class="filter-group">
         <label>Account</label>
-        <select class="filter-input" id="accountFilter">
+        <select class="filter-input">
           <option>All Accounts</option>
         </select>
       </div>
@@ -98,7 +121,7 @@
 
       <div class="filter-group">
         <label>Week</label>
-        <select class="filter-input" id="weekFilter">
+        <select class="filter-input">
           <option>All Weeks</option>
         </select>
       </div>
@@ -108,34 +131,54 @@
       📅 Data Updated Till: --
     </div>
 
-    <!-- LOCKED SUMMARY SECTION -->
+    <!-- DASHBOARD SUMMARIES -->
     <section class="summary-grid">
+
       <div class="summary-card">
         <h3>Total Revenue</h3>
-        <p class="summary-value">₹0</p>
+        <p class="summary-value">—</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Net Sales</h3>
+        <p class="summary-value">—</p>
       </div>
 
       <div class="summary-card">
         <h3>Ad Spend</h3>
-        <p class="summary-value">₹0</p>
+        <p class="summary-value">—</p>
       </div>
 
       <div class="summary-card">
         <h3>ROI</h3>
-        <p class="summary-value">0.00</p>
+        <p class="summary-value">—</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Spend % (vs 3%)</h3>
+        <p class="summary-value">—</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Return %</h3>
+        <p class="summary-value">—</p>
+      </div>
+
+    </section>
+
+    <!-- REPORT PLACEHOLDER -->
+    <section class="card">
+      <h2>Report Section</h2>
+      <div class="chart-placeholder">
+        Report content will render here
       </div>
     </section>
 
-    <section class="card">
-      <h2>Daily Sales Trend</h2>
-      <div class="chart-placeholder"></div>
-    </section>
-
   </main>
+
 </div>
 
 <script src="./js/ui/layout/sidebar.js"></script>
-<script src="./js/ui/layout/dataLoader.js"></script>
 
 </body>
 </html>
