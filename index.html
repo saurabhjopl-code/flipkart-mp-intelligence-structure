@@ -6,11 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="./assets/favicon.png" />
-
-  <!-- Google Font (Modern SaaS Friendly) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="./css/variables.css" />
@@ -29,7 +25,7 @@
     </div>
 
     <div class="header-center">
-      <h1 class="app-title">Rajnandini Performance Intelligence</h1>
+      <h1 class="app-title">RAJNANDINI PERFORMANCE INTELLIGENCE</h1>
       <p class="app-subtitle">Ads • Sales • Profitability • Control</p>
     </div>
 
@@ -44,7 +40,7 @@
   <div class="layout">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
       <nav>
         <ul>
           <li class="nav-item active">Dashboard</li>
@@ -58,39 +54,22 @@
     </aside>
 
     <!-- CONTENT -->
-    <main class="main-content">
+    <main class="main-content" id="mainContent">
 
       <!-- FILTER BAR -->
-      <div class="filter-container">
-
-        <div class="filter-group">
-          <label>Account</label>
-          <select class="filter-input">
+      <div class="filter-bar">
+        <div class="filters">
+          <select>
             <option>All Accounts</option>
           </select>
-        </div>
 
-        <div class="filter-group">
-          <label>Date Range</label>
-          <div class="date-range">
-            <input type="date" class="filter-input" />
-            <span>to</span>
-            <input type="date" class="filter-input" />
-          </div>
-        </div>
+          <input type="month" />
 
-        <div class="filter-group">
-          <label>Week</label>
-          <select class="filter-input">
-            <option>All Weeks</option>
-          </select>
-        </div>
+          <input type="date" />
+          <input type="date" />
 
-        <div class="filter-actions">
-          <button class="btn btn-secondary">Apply</button>
-          <button class="btn btn-light">Reset</button>
+          <button class="btn btn-secondary">Reset</button>
         </div>
-
       </div>
 
       <!-- DATA FRESHNESS -->
@@ -125,7 +104,7 @@
       <section class="card">
         <h2>Daily Sales Trend</h2>
         <div class="chart-placeholder">
-          Line Chart will render here
+          Chart will render here
         </div>
       </section>
 
@@ -140,8 +119,9 @@
     </main>
   </div>
 
-  <script src="./js/ui/layout/sidebar.js"></script>
+  <!-- JS -->
   <script src="./js/ui/layout/header.js"></script>
+  <script src="./js/ui/layout/sidebar.js"></script>
 
 </body>
 </html>
