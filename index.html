@@ -19,6 +19,16 @@
 
 <body>
 
+<div class="progress-overlay" id="progressOverlay">
+  <div class="progress-box">
+    <h3>Loading Data...</h3>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-status" id="progressStatus"></div>
+  </div>
+</div>
+
 <header class="app-header">
   <div>
     <img src="./assets/logo.png" class="logo" />
@@ -39,164 +49,55 @@
   <aside class="sidebar">
     <ul>
       <li class="nav-item active">Dashboard</li>
-
-      <li class="nav-item expandable">
-        Sales
-        <ul class="sub-menu">
-          <li class="sub-item">Sales Health</li>
-          <li class="sub-item">Category Performance</li>
-          <li class="sub-item">Top Sellers</li>
-          <li class="sub-item">SKU Deep Dive</li>
-        </ul>
-      </li>
-
-      <li class="nav-item expandable">
-        Ads (PLA)
-        <ul class="sub-menu">
-          <li class="sub-item">Spend vs Sales</li>
-          <li class="sub-item">Campaign Performance</li>
-          <li class="sub-item">SKU Ads Performance</li>
-          <li class="sub-item">Keyword Performance</li>
-          <li class="sub-item">Placement Performance</li>
-        </ul>
-      </li>
-
-      <li class="nav-item expandable">
-        Payments
-        <ul class="sub-menu">
-          <li class="sub-item">Payment Summary</li>
-          <li class="sub-item">Settlement Detail</li>
-        </ul>
-      </li>
-
-      <li class="nav-item expandable">
-        Profitability
-        <ul class="sub-menu">
-          <li class="sub-item">SKU P&L</li>
-          <li class="sub-item">Category P&L</li>
-          <li class="sub-item">Account P&L</li>
-          <li class="sub-item">Break-even Analysis</li>
-        </ul>
-      </li>
-
-      <li class="nav-item expandable">
-        Insights
-        <ul class="sub-menu">
-          <li class="sub-item">MoM Comparison</li>
-          <li class="sub-item">Ads vs Organic</li>
-          <li class="sub-item">Spend Control</li>
-        </ul>
-      </li>
     </ul>
   </aside>
 
   <main class="main-content">
 
-    <div class="filter-container">
-      <div class="filter-group">
-        <label>Account</label>
-        <select class="filter-input">
-          <option>All Accounts</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <label>Date Range</label>
-        <div class="date-range">
-          <input type="date" class="filter-input">
-          <span>to</span>
-          <input type="date" class="filter-input">
-        </div>
-      </div>
-
-      <div class="filter-group">
-        <label>Week</label>
-        <select class="filter-input">
-          <option>All Weeks</option>
-        </select>
-      </div>
-    </div>
-
     <div class="data-freshness">
       📅 Data Updated Till: --
-    </div>
-
-    <!-- PREMIUM TOGGLE -->
-    <div class="data-source-toggle">
-      <span class="toggle-label left active">GMV</span>
-
-      <label class="switch">
-        <input type="checkbox" id="dataSourceToggle">
-        <span class="slider"></span>
-      </label>
-
-      <span class="toggle-label right">CTR</span>
     </div>
 
     <section class="summary-grid">
 
       <div class="summary-card">
         <h3>Total Revenue (GMV)</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="totalRevenue">—</p>
       </div>
 
       <div class="summary-card">
         <h3>Return %</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="returnPercent">—</p>
       </div>
 
       <div class="summary-card">
         <h3>Net Sales</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="netSales">—</p>
       </div>
 
       <div class="summary-card">
         <h3>Ad Spend</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="adSpend">—</p>
       </div>
 
       <div class="summary-card">
         <h3>ROI</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="roiValue">—</p>
       </div>
 
       <div class="summary-card">
         <h3>Spend % (vs 3%)</h3>
-        <p class="summary-value">—</p>
+        <p class="summary-value" id="spendPercent">—</p>
       </div>
 
-    </section>
-
-    <section class="card">
-      <h2>Report Section</h2>
-      <div class="chart-placeholder">
-        Report content will render here
-      </div>
     </section>
 
   </main>
-
 </div>
 
-<script type="module" src="./js/ui/layout/dataLoader.js"></script>
 <script src="./js/ui/layout/sidebar.js"></script>
-
-<script>
-  const toggle = document.getElementById("dataSourceToggle");
-  const leftLabel = document.querySelector(".toggle-label.left");
-  const rightLabel = document.querySelector(".toggle-label.right");
-
-  toggle.addEventListener("change", function() {
-    if (this.checked) {
-      leftLabel.classList.remove("active");
-      rightLabel.classList.add("active");
-    } else {
-      rightLabel.classList.remove("active");
-      leftLabel.classList.add("active");
-    }
-  });
-</script>
+<script src="./js/ui/layout/dataLoader.js"></script>
+<script src="./js/summaries/summaryEngine.js"></script>
 
 </body>
 </html>
-
