@@ -36,13 +36,10 @@
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <ul>
-
       <li class="nav-item active">Dashboard</li>
 
-      <!-- SALES -->
       <li class="nav-item expandable">
         Sales
         <ul class="sub-menu">
@@ -53,7 +50,6 @@
         </ul>
       </li>
 
-      <!-- ADS -->
       <li class="nav-item expandable">
         Ads (PLA)
         <ul class="sub-menu">
@@ -65,7 +61,6 @@
         </ul>
       </li>
 
-      <!-- PAYMENTS -->
       <li class="nav-item expandable">
         Payments
         <ul class="sub-menu">
@@ -74,7 +69,6 @@
         </ul>
       </li>
 
-      <!-- PROFITABILITY -->
       <li class="nav-item expandable">
         Profitability
         <ul class="sub-menu">
@@ -85,7 +79,6 @@
         </ul>
       </li>
 
-      <!-- INSIGHTS -->
       <li class="nav-item expandable">
         Insights
         <ul class="sub-menu">
@@ -94,14 +87,11 @@
           <li class="sub-item">Spend Control</li>
         </ul>
       </li>
-
     </ul>
   </aside>
 
-  <!-- MAIN CONTENT -->
   <main class="main-content">
 
-    <!-- FILTER BAR -->
     <div class="filter-container">
       <div class="filter-group">
         <label>Account</label>
@@ -131,11 +121,25 @@
       📅 Data Updated Till: --
     </div>
 
-    <!-- DASHBOARD SUMMARIES -->
+    <!-- DATA SOURCE TOGGLE -->
+    <div class="data-source-toggle">
+      <label>Sales Data Source:</label>
+      <select class="filter-input">
+        <option value="GMV">GMV (Recommended)</option>
+        <option value="CTR">CTR (Transaction Based)</option>
+      </select>
+    </div>
+
+    <!-- FINAL SUMMARY ORDER -->
     <section class="summary-grid">
 
       <div class="summary-card">
-        <h3>Total Revenue</h3>
+        <h3>Total Revenue (GMV)</h3>
+        <p class="summary-value">—</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Return %</h3>
         <p class="summary-value">—</p>
       </div>
 
@@ -159,14 +163,8 @@
         <p class="summary-value">—</p>
       </div>
 
-      <div class="summary-card">
-        <h3>Return %</h3>
-        <p class="summary-value">—</p>
-      </div>
-
     </section>
 
-    <!-- REPORT PLACEHOLDER -->
     <section class="card">
       <h2>Report Section</h2>
       <div class="chart-placeholder">
