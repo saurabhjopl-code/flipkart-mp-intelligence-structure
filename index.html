@@ -6,7 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.png" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
+
+  <!-- Google Font (Modern SaaS Friendly) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="./css/variables.css" />
@@ -25,7 +29,7 @@
     </div>
 
     <div class="header-center">
-      <h1 class="app-title">RAJNANDINI PERFORMANCE INTELLIGENCE</h1>
+      <h1 class="app-title">Rajnandini Performance Intelligence</h1>
       <p class="app-subtitle">Ads • Sales • Profitability • Control</p>
     </div>
 
@@ -40,7 +44,7 @@
   <div class="layout">
 
     <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar">
       <nav>
         <ul>
           <li class="nav-item active">Dashboard</li>
@@ -54,22 +58,39 @@
     </aside>
 
     <!-- CONTENT -->
-    <main class="main-content" id="mainContent">
+    <main class="main-content">
 
       <!-- FILTER BAR -->
-      <div class="filter-bar">
-        <div class="filters">
-          <select>
+      <div class="filter-container">
+
+        <div class="filter-group">
+          <label>Account</label>
+          <select class="filter-input">
             <option>All Accounts</option>
           </select>
-
-          <input type="month" />
-
-          <input type="date" />
-          <input type="date" />
-
-          <button class="btn btn-secondary">Reset</button>
         </div>
+
+        <div class="filter-group">
+          <label>Date Range</label>
+          <div class="date-range">
+            <input type="date" class="filter-input" />
+            <span>to</span>
+            <input type="date" class="filter-input" />
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <label>Week</label>
+          <select class="filter-input">
+            <option>All Weeks</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-secondary">Apply</button>
+          <button class="btn btn-light">Reset</button>
+        </div>
+
       </div>
 
       <!-- DATA FRESHNESS -->
@@ -104,7 +125,7 @@
       <section class="card">
         <h2>Daily Sales Trend</h2>
         <div class="chart-placeholder">
-          Chart will render here
+          Line Chart will render here
         </div>
       </section>
 
@@ -119,10 +140,8 @@
     </main>
   </div>
 
-  <!-- JS -->
-  <script src="./js/ui/layout/header.js"></script>
   <script src="./js/ui/layout/sidebar.js"></script>
+  <script src="./js/ui/layout/header.js"></script>
 
 </body>
 </html>
-
