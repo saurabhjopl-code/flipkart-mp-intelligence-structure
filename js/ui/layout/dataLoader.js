@@ -15,13 +15,11 @@ const overlay = document.getElementById("progressOverlay");
 
 let loaded = 0;
 const totalSheets = Object.keys(sheets).length;
-let masterData = {};
 
 async function fetchSheet(name, url) {
   const response = await fetch(url);
   const text = await response.text();
   const rows = text.trim().split("\n").length - 1;
-  masterData[name] = rows;
 
   loaded++;
   const percent = (loaded / totalSheets) * 100;
@@ -31,35 +29,8 @@ async function fetchSheet(name, url) {
   if (loaded === totalSheets) {
     setTimeout(() => {
       overlay.style.display = "none";
-      populateSummary();
-      populateAccounts();
     }, 800);
   }
-}
-
-function populateSummary() {
-  const grid = document.getElementById("summaryGrid");
-  grid.innerHTML = `
-    <div class="summary-card">
-      <h3>Total Sheets Loaded</h3>
-      <p class="summary-value">${totalSheets}</p>
-    </div>
-    <div class="summary-card">
-      <h3>Total Rows</h3>
-      <p class="summary-value">
-        ${Object.values(masterData).reduce((a,b)=>a+b,0)}
-      </p>
-    </div>
-    <div class="summary-card">
-      <h3>ROI (Sample)</h3>
-      <p class="summary-value">3.5</p>
-    </div>
-  `;
-}
-
-function populateAccounts() {
-  const accountSelect = document.getElementById("accountFilter");
-  accountSelect.innerHTML += `<option>Sample Account 1</option>`;
 }
 
 for (const [name, url] of Object.entries(sheets)) {
