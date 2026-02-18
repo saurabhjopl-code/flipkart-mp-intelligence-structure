@@ -19,7 +19,7 @@
 
 <body>
 
-<!-- PROGRESS OVERLAY -->
+<!-- PROGRESS OVERLAY (Does NOT modify layout) -->
 <div class="progress-overlay" id="progressOverlay">
   <div class="progress-box">
     <h3>Loading Data...</h3>
@@ -31,12 +31,18 @@
 </div>
 
 <header class="app-header">
-  <div><img src="./assets/logo.png" class="logo"></div>
+  <div class="header-left">
+    <img src="./assets/logo.png" class="logo" />
+  </div>
+
   <div class="header-center">
     <h1 class="app-title">Rajnandini Performance Intelligence</h1>
     <p class="app-subtitle">Ads • Sales • ROI • Control</p>
   </div>
-  <div><button class="btn btn-outline">Export Summary</button></div>
+
+  <div class="header-right">
+    <button class="btn btn-outline">Export Summary</button>
+  </div>
 </header>
 
 <div class="layout">
@@ -44,8 +50,26 @@
   <aside class="sidebar">
     <ul>
       <li class="nav-item active">Dashboard</li>
-      <li class="nav-item">Sales</li>
-      <li class="nav-item">Ads (PLA)</li>
+
+      <li class="nav-item expandable">
+        Sales
+        <ul class="sub-menu">
+          <li class="sub-item">Sales Summary</li>
+          <li class="sub-item">Category Analysis</li>
+          <li class="sub-item">Top Sellers</li>
+        </ul>
+      </li>
+
+      <li class="nav-item expandable">
+        Ads (PLA)
+        <ul class="sub-menu">
+          <li class="sub-item">Spend vs Sales</li>
+          <li class="sub-item">Campaign Performance</li>
+          <li class="sub-item">Keyword Performance</li>
+          <li class="sub-item">Placement Performance</li>
+        </ul>
+      </li>
+
       <li class="nav-item">Payments</li>
       <li class="nav-item">Profitability</li>
       <li class="nav-item">Insights</li>
@@ -54,6 +78,7 @@
 
   <main class="main-content">
 
+    <!-- FILTERS -->
     <div class="filter-container">
       <div class="filter-group">
         <label>Account</label>
@@ -79,20 +104,38 @@
       </div>
     </div>
 
-    <div class="data-freshness" id="dataFreshness">
+    <div class="data-freshness">
       📅 Data Updated Till: --
     </div>
 
-    <section class="summary-grid" id="summaryGrid"></section>
+    <!-- LOCKED SUMMARY SECTION -->
+    <section class="summary-grid">
+      <div class="summary-card">
+        <h3>Total Revenue</h3>
+        <p class="summary-value">₹0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Ad Spend</h3>
+        <p class="summary-value">₹0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>ROI</h3>
+        <p class="summary-value">0.00</p>
+      </div>
+    </section>
 
     <section class="card">
       <h2>Daily Sales Trend</h2>
-      <div class="chart-placeholder">Chart will render</div>
+      <div class="chart-placeholder"></div>
     </section>
 
   </main>
 </div>
 
+<script src="./js/ui/layout/sidebar.js"></script>
 <script src="./js/ui/layout/dataLoader.js"></script>
+
 </body>
 </html>
