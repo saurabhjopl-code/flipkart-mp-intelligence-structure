@@ -8,11 +8,10 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/favicon.png" />
 
-  <!-- Google Font (Modern SaaS Friendly) -->
+  <!-- Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="./css/variables.css" />
   <link rel="stylesheet" href="./css/theme.css" />
   <link rel="stylesheet" href="./css/layout.css" />
@@ -22,126 +21,126 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="app-header">
-    <div class="header-left">
-      <img src="./assets/logo.png" alt="Logo" class="logo" />
-    </div>
-
-    <div class="header-center">
-      <h1 class="app-title">Rajnandini Performance Intelligence</h1>
-      <p class="app-subtitle">Ads • Sales • Profitability • Control</p>
-    </div>
-
-    <div class="header-right">
-      <button class="btn btn-outline" id="exportBtn">
-        Export Summary
-      </button>
-    </div>
-  </header>
-
-  <!-- MAIN LAYOUT -->
-  <div class="layout">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <nav>
-        <ul>
-          <li class="nav-item active">Dashboard</li>
-          <li class="nav-item">Sales</li>
-          <li class="nav-item">Ads (PLA)</li>
-          <li class="nav-item">Payments</li>
-          <li class="nav-item">Profitability</li>
-          <li class="nav-item">Insights</li>
-        </ul>
-      </nav>
-    </aside>
-
-    <!-- CONTENT -->
-    <main class="main-content">
-
-      <!-- FILTER BAR -->
-      <div class="filter-container">
-
-        <div class="filter-group">
-          <label>Account</label>
-          <select class="filter-input">
-            <option>All Accounts</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label>Date Range</label>
-          <div class="date-range">
-            <input type="date" class="filter-input" />
-            <span>to</span>
-            <input type="date" class="filter-input" />
-          </div>
-        </div>
-
-        <div class="filter-group">
-          <label>Week</label>
-          <select class="filter-input">
-            <option>All Weeks</option>
-          </select>
-        </div>
-
-        <div class="filter-actions">
-          <button class="btn btn-secondary">Apply</button>
-          <button class="btn btn-light">Reset</button>
-        </div>
-
-      </div>
-
-      <!-- DATA FRESHNESS -->
-      <div class="data-freshness">
-        📅 Data Updated Till: --
-      </div>
-
-      <!-- SUMMARY SECTION -->
-      <section class="summary-grid">
-        <div class="summary-card">
-          <h3>Total Revenue</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>Ad Spend</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>ROAS</h3>
-          <p class="summary-value">0.00</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>Profit</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-      </section>
-
-      <!-- CHART AREA -->
-      <section class="card">
-        <h2>Daily Sales Trend</h2>
-        <div class="chart-placeholder">
-          Line Chart will render here
-        </div>
-      </section>
-
-      <!-- TABLE AREA -->
-      <section class="card">
-        <h2>Report Table</h2>
-        <div class="table-placeholder">
-          Table will render here
-        </div>
-      </section>
-
-    </main>
+<header class="app-header">
+  <div class="header-left">
+    <img src="./assets/logo.png" alt="Logo" class="logo" />
   </div>
 
-  <script src="./js/ui/layout/sidebar.js"></script>
-  <script src="./js/ui/layout/header.js"></script>
+  <div class="header-center">
+    <h1 class="app-title">Rajnandini Performance Intelligence</h1>
+    <p class="app-subtitle">Ads • Sales • ROI • Control</p>
+  </div>
+
+  <div class="header-right">
+    <button class="btn btn-outline" id="exportBtn">Export Summary</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <nav>
+      <ul>
+
+        <li class="nav-item active">Dashboard</li>
+
+        <li class="nav-item expandable">
+          Sales
+          <ul class="sub-menu">
+            <li class="sub-item">Sales Summary</li>
+            <li class="sub-item">Category Analysis</li>
+            <li class="sub-item">Top Sellers</li>
+          </ul>
+        </li>
+
+        <li class="nav-item expandable">
+          Ads (PLA)
+          <ul class="sub-menu">
+            <li class="sub-item">Spend vs Sales</li>
+            <li class="sub-item">Campaign Performance</li>
+            <li class="sub-item">Keyword Performance</li>
+            <li class="sub-item">Placement Performance</li>
+          </ul>
+        </li>
+
+        <li class="nav-item">Payments</li>
+        <li class="nav-item">Profitability</li>
+        <li class="nav-item">Insights</li>
+
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+    <!-- FILTER -->
+    <div class="filter-container">
+
+      <div class="filter-group">
+        <label>Account</label>
+        <select class="filter-input">
+          <option>All Accounts</option>
+          <option>Account A</option>
+          <option>Account B</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Date Range</label>
+        <div class="date-range">
+          <input type="date" class="filter-input">
+          <span>to</span>
+          <input type="date" class="filter-input">
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label>Week</label>
+        <select class="filter-input">
+          <option>All Weeks</option>
+          <option>Week 1</option>
+          <option>Week 2</option>
+        </select>
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn btn-secondary">Apply</button>
+        <button class="btn btn-light">Reset</button>
+      </div>
+
+    </div>
+
+    <!-- DATA FRESHNESS -->
+    <div class="data-freshness">
+      📅 Data Updated Till: 18 Feb 2026
+    </div>
+
+    <!-- SUMMARY -->
+    <section class="summary-grid" id="summaryGrid">
+      <!-- Populated by JS -->
+    </section>
+
+    <!-- CHART -->
+    <section class="card">
+      <h2>Daily Sales Trend</h2>
+      <div class="chart-placeholder">Line Chart (Temp Data)</div>
+    </section>
+
+    <!-- TABLE -->
+    <section class="card">
+      <h2>Sales Summary Table</h2>
+      <div class="table-placeholder">Table (Temp Data)</div>
+    </section>
+
+  </main>
+
+</div>
+
+<script src="./js/ui/layout/sidebar.js"></script>
+<script src="./js/ui/layout/header.js"></script>
+<script src="./js/ui/layout/tempData.js"></script>
 
 </body>
 </html>
