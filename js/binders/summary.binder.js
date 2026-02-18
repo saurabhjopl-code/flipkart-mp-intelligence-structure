@@ -1,9 +1,3 @@
-import { getRevenueSummary } from "../summaries/revenue.summary.js";
-import { getReturnSummary } from "../summaries/return.summary.js";
-import { getSpendSummary } from "../summaries/spend.summary.js";
-import { getRoiSummary } from "../summaries/roas.summary.js";
-import { getSpendControlSummary } from "../summaries/spendControl.summary.js";
-
 function formatCurrency(value) {
   return "₹" + value.toLocaleString("en-IN", { maximumFractionDigits: 0 });
 }
@@ -12,12 +6,15 @@ function formatPercent(value) {
   return value.toFixed(2) + "%";
 }
 
-function waitForData() {
-  const interval = setInterval(() => {
+function waitForDataAndRender() {
+
+  const interval = setInterval(function () {
+
     if (window.dataStore && window.dataStore.isLoaded) {
       clearInterval(interval);
       renderSummaries();
     }
+
   }, 200);
 }
 
@@ -48,4 +45,4 @@ function renderSummaries() {
     formatPercent(spendControl.spendPercent);
 }
 
-waitForData();
+waitForDataAndRender();
