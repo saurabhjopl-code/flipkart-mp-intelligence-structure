@@ -5,10 +5,11 @@
   <title>Rajnandini Performance Intelligence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+  <link rel="icon" type="image/png" href="./assets/favicon.png" />
 
-  <!-- CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="./css/variables.css" />
   <link rel="stylesheet" href="./css/theme.css" />
   <link rel="stylesheet" href="./css/layout.css" />
@@ -18,110 +19,123 @@
 
 <body>
 
-  <!-- HEADER -->
-  <header class="app-header">
-    <div class="header-left">
-      <img src="./assets/logo.png" alt="Logo" class="logo" />
+<!-- PROGRESS OVERLAY (Does NOT modify layout) -->
+<div class="progress-overlay" id="progressOverlay">
+  <div class="progress-box">
+    <h3>Loading Data...</h3>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
     </div>
+    <div class="progress-status" id="progressStatus"></div>
+  </div>
+</div>
 
-    <div class="header-center">
-      <h1 class="app-title">RAJNANDINI PERFORMANCE INTELLIGENCE</h1>
-      <p class="app-subtitle">Ads • Sales • Profitability • Control</p>
-    </div>
-
-    <div class="header-right">
-      <button class="btn btn-outline" id="exportBtn">
-        Export Summary
-      </button>
-    </div>
-  </header>
-
-  <!-- MAIN LAYOUT -->
-  <div class="layout">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
-      <nav>
-        <ul>
-          <li class="nav-item active">Dashboard</li>
-          <li class="nav-item">Sales</li>
-          <li class="nav-item">Ads (PLA)</li>
-          <li class="nav-item">Payments</li>
-          <li class="nav-item">Profitability</li>
-          <li class="nav-item">Insights</li>
-        </ul>
-      </nav>
-    </aside>
-
-    <!-- CONTENT -->
-    <main class="main-content" id="mainContent">
-
-      <!-- FILTER BAR -->
-      <div class="filter-bar">
-        <div class="filters">
-          <select>
-            <option>All Accounts</option>
-          </select>
-
-          <input type="month" />
-
-          <input type="date" />
-          <input type="date" />
-
-          <button class="btn btn-secondary">Reset</button>
-        </div>
-      </div>
-
-      <!-- DATA FRESHNESS -->
-      <div class="data-freshness">
-        📅 Data Updated Till: --
-      </div>
-
-      <!-- SUMMARY SECTION -->
-      <section class="summary-grid">
-        <div class="summary-card">
-          <h3>Total Revenue</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>Ad Spend</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>ROAS</h3>
-          <p class="summary-value">0.00</p>
-        </div>
-
-        <div class="summary-card">
-          <h3>Profit</h3>
-          <p class="summary-value">₹0</p>
-        </div>
-      </section>
-
-      <!-- CHART AREA -->
-      <section class="card">
-        <h2>Daily Sales Trend</h2>
-        <div class="chart-placeholder">
-          Chart will render here
-        </div>
-      </section>
-
-      <!-- TABLE AREA -->
-      <section class="card">
-        <h2>Report Table</h2>
-        <div class="table-placeholder">
-          Table will render here
-        </div>
-      </section>
-
-    </main>
+<header class="app-header">
+  <div class="header-left">
+    <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <!-- JS -->
-  <script src="./js/ui/layout/header.js"></script>
-  <script src="./js/ui/layout/sidebar.js"></script>
+  <div class="header-center">
+    <h1 class="app-title">Rajnandini Performance Intelligence</h1>
+    <p class="app-subtitle">Ads • Sales • ROI • Control</p>
+  </div>
+
+  <div class="header-right">
+    <button class="btn btn-outline">Export Summary</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <ul>
+      <li class="nav-item active">Dashboard</li>
+
+      <li class="nav-item expandable">
+        Sales
+        <ul class="sub-menu">
+          <li class="sub-item">Sales Summary</li>
+          <li class="sub-item">Category Analysis</li>
+          <li class="sub-item">Top Sellers</li>
+        </ul>
+      </li>
+
+      <li class="nav-item expandable">
+        Ads (PLA)
+        <ul class="sub-menu">
+          <li class="sub-item">Spend vs Sales</li>
+          <li class="sub-item">Campaign Performance</li>
+          <li class="sub-item">Keyword Performance</li>
+          <li class="sub-item">Placement Performance</li>
+        </ul>
+      </li>
+
+      <li class="nav-item">Payments</li>
+      <li class="nav-item">Profitability</li>
+      <li class="nav-item">Insights</li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+
+    <!-- FILTERS -->
+    <div class="filter-container">
+      <div class="filter-group">
+        <label>Account</label>
+        <select class="filter-input" id="accountFilter">
+          <option>All Accounts</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label>Date Range</label>
+        <div class="date-range">
+          <input type="date" class="filter-input">
+          <span>to</span>
+          <input type="date" class="filter-input">
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label>Week</label>
+        <select class="filter-input" id="weekFilter">
+          <option>All Weeks</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="data-freshness">
+      📅 Data Updated Till: --
+    </div>
+
+    <!-- LOCKED SUMMARY SECTION -->
+    <section class="summary-grid">
+      <div class="summary-card">
+        <h3>Total Revenue</h3>
+        <p class="summary-value">₹0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>Ad Spend</h3>
+        <p class="summary-value">₹0</p>
+      </div>
+
+      <div class="summary-card">
+        <h3>ROI</h3>
+        <p class="summary-value">0.00</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Daily Sales Trend</h2>
+      <div class="chart-placeholder"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="./js/ui/layout/sidebar.js"></script>
+<script src="./js/ui/layout/dataLoader.js"></script>
 
 </body>
 </html>
