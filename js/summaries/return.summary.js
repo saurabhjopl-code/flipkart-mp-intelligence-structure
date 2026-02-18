@@ -1,10 +1,18 @@
-import { aggregateGMV } from "../aggregations/gmv.aggregation.js";
-import { calculateReturnPercent } from "../calculations/return.calculation.js";
+function getReturnSummary() {
 
-export function getReturnSummary() {
-  const { totalRevenue, returnAmount } = aggregateGMV();
+  const GMV = window.dataStore.GMV || [];
 
-  const returnPercent = calculateReturnPercent(returnAmount, totalRevenue);
+  let totalRevenue = 0;
+  let returnAmount = 0;
+
+  GMV.forEach(row => {
+    totalRevenue += Number(row["GMV"] || 0);
+    returnAmount += Number(row["Return Amount"] || 0);
+  });
+
+  const returnPercent = totalRevenue > 0
+    ? (returnAmount / totalRevenue) * 100
+    : 0;
 
   return {
     returnPercent
