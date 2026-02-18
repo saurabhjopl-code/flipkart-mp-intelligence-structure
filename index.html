@@ -121,16 +121,18 @@
       📅 Data Updated Till: --
     </div>
 
-    <!-- DATA SOURCE TOGGLE -->
+    <!-- PREMIUM TOGGLE -->
     <div class="data-source-toggle">
-      <label>Sales Data Source:</label>
-      <select class="filter-input">
-        <option value="GMV">GMV (Recommended)</option>
-        <option value="CTR">CTR (Transaction Based)</option>
-      </select>
+      <span class="toggle-label left active">GMV</span>
+
+      <label class="switch">
+        <input type="checkbox" id="dataSourceToggle">
+        <span class="slider"></span>
+      </label>
+
+      <span class="toggle-label right">CTR</span>
     </div>
 
-    <!-- FINAL SUMMARY ORDER -->
     <section class="summary-grid">
 
       <div class="summary-card">
@@ -177,6 +179,21 @@
 </div>
 
 <script src="./js/ui/layout/sidebar.js"></script>
+<script>
+  const toggle = document.getElementById("dataSourceToggle");
+  const leftLabel = document.querySelector(".toggle-label.left");
+  const rightLabel = document.querySelector(".toggle-label.right");
+
+  toggle.addEventListener("change", function() {
+    if (this.checked) {
+      leftLabel.classList.remove("active");
+      rightLabel.classList.add("active");
+    } else {
+      rightLabel.classList.remove("active");
+      leftLabel.classList.add("active");
+    }
+  });
+</script>
 
 </body>
 </html>
