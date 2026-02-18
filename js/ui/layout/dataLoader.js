@@ -18,13 +18,12 @@ const totalSheets = Object.keys(sheets).length;
 
 async function fetchSheet(name, url) {
   const response = await fetch(url);
-  const text = await response.text();
-  const rows = text.trim().split("\n").length - 1;
+  await response.text();
 
   loaded++;
   const percent = (loaded / totalSheets) * 100;
   progressFill.style.width = percent + "%";
-  progressStatus.innerHTML += `✔ ${name} Loaded (${rows} rows)<br>`;
+  progressStatus.innerHTML += `✔ ${name} Loaded<br>`;
 
   if (loaded === totalSheets) {
     setTimeout(() => {
