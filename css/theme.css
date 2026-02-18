@@ -1,6 +1,19 @@
 body {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Inter', sans-serif;
   background: var(--background);
   color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0 0 8px 0;
+}
+
+label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  display: block;
 }
