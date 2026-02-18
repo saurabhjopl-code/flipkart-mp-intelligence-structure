@@ -1,7 +1,19 @@
-document.querySelectorAll(".expandable").forEach(menu => {
-  menu.addEventListener("click", function () {
+const expandableMenus = document.querySelectorAll(".expandable");
+
+expandableMenus.forEach(menu => {
+  menu.addEventListener("click", function (e) {
+    e.stopPropagation();
+
+    const currentlyOpen = document.querySelector(".expandable.open");
+
+    if (currentlyOpen && currentlyOpen !== this) {
+      currentlyOpen.classList.remove("open");
+      currentlyOpen.querySelector(".sub-menu").classList.remove("open");
+    }
+
+    this.classList.toggle("open");
     const subMenu = this.querySelector(".sub-menu");
-    subMenu.style.display = subMenu.style.display === "block" ? "none" : "block";
+    subMenu.classList.toggle("open");
   });
 });
 
